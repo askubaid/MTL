@@ -1,0 +1,2 @@
+intent_accuracy,intent_macro_f1,emotion_accuracy,emotion_macro_f1,combined_score
+0.8965,0.9219,0.5779,0.4667,0.6816
