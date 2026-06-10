@@ -36,7 +36,9 @@ Error generating stack: `+e.message+`
 `,inConstruct:`tableCell`},{atBreak:!0,character:`|`,after:`[	 :-]`},{character:`|`,inConstruct:`tableCell`},{atBreak:!0,character:`:`,after:`-`},{atBreak:!0,character:`-`,after:`[:|-]`}],handlers:{inlineCode:f,table:o,tableCell:c,tableRow:s}};function o(e,t,n,r){return l(u(e,n,r),e.align)}function s(e,t,n,r){let i=l([d(e,n,r)]);return i.slice(0,i.indexOf(`
 `))}function c(e,t,n,r){let i=n.enter(`tableCell`),o=n.enter(`phrasing`),s=n.containerPhrasing(e,{...r,before:a,after:a});return o(),i(),s}function l(e,t){return ds(e,{align:t,alignDelimiters:r,padding:n,stringLength:i})}function u(e,t,n){let r=e.children,i=-1,a=[],o=t.enter(`table`);for(;++i<r.length;)a[i]=d(r[i],t,n);return o(),a}function d(e,t,n){let r=e.children,i=-1,a=[],o=t.enter(`tableRow`);for(;++i<r.length;)a[i]=c(r[i],e,t,n);return o(),a}function f(e,t,n){let r=cc.inlineCode(e,t,n);return n.stack.includes(`tableCell`)&&(r=r.replace(/\|/g,`\\$&`)),r}}function vc(){return{exit:{taskListCheckValueChecked:bc,taskListCheckValueUnchecked:bc,paragraph:xc}}}function yc(){return{unsafe:[{atBreak:!0,character:`-`,after:`[:|-]`}],handlers:{listItem:Sc}}}function bc(e){let t=this.stack[this.stack.length-2];t.type,t.checked=e.type===`taskListCheckValueChecked`}function xc(e){let t=this.stack[this.stack.length-2];if(t&&t.type===`listItem`&&typeof t.checked==`boolean`){let e=this.stack[this.stack.length-1];e.type;let n=e.children[0];if(n&&n.type===`text`){let r=t.children,i=-1,a;for(;++i<r.length;){let e=r[i];if(e.type===`paragraph`){a=e;break}}a===e&&(n.value=n.value.slice(1),n.value.length===0?e.children.shift():e.position&&n.position&&typeof n.position.start.offset==`number`&&(n.position.start.column++,n.position.start.offset++,e.position.start=Object.assign({},n.position.start)))}}this.exit(e)}function Sc(e,t,n,r){let i=e.children[0],a=typeof e.checked==`boolean`&&i&&i.type===`paragraph`,o=`[`+(e.checked?`x`:` `)+`] `,s=n.createTracker(r);a&&s.move(o);let c=cc.listItem(e,t,n,{...r,...s.current()});return a&&(c=c.replace(/^(?:[*+-]|\d+\.)([\r\n]| {1,3})/,l)),c;function l(e){return e+o}}function Cc(){return[ko(),$o(),is(),lc(),vc()]}function wc(e){return{extensions:[Ao(),es(e),as(),_c(e),yc()]}}var Tc={tokenize:Rc,partial:!0},Ec={tokenize:zc,partial:!0},Dc={tokenize:Bc,partial:!0},Oc={tokenize:Vc,partial:!0},kc={tokenize:Hc,partial:!0},Ac={name:`wwwAutolink`,tokenize:G,previous:Uc},jc={name:`protocolAutolink`,tokenize:Lc,previous:Wc},Mc={name:`emailAutolink`,tokenize:Ic,previous:Gc},Nc={};function Pc(){return{text:Nc}}for(var Fc=48;Fc<123;)Nc[Fc]=Mc,Fc++,Fc===58?Fc=65:Fc===91&&(Fc=97);Nc[43]=Mc,Nc[45]=Mc,Nc[46]=Mc,Nc[95]=Mc,Nc[72]=[Mc,jc],Nc[104]=[Mc,jc],Nc[87]=[Mc,Ac],Nc[119]=[Mc,Ac];function Ic(e,t,n){let r=this,i,a;return o;function o(t){return!Kc(t)||!Gc.call(r,r.previous)||qc(r.events)?n(t):(e.enter(`literalAutolink`),e.enter(`literalAutolinkEmail`),s(t))}function s(t){return Kc(t)?(e.consume(t),s):t===64?(e.consume(t),c):n(t)}function c(t){return t===46?e.check(kc,u,l)(t):t===45||t===95||Pt(t)?(a=!0,e.consume(t),c):u(t)}function l(t){return e.consume(t),i=!0,c}function u(o){return a&&i&&I(r.previous)?(e.exit(`literalAutolinkEmail`),e.exit(`literalAutolink`),t(o)):n(o)}}function G(e,t,n){let r=this;return i;function i(t){return t!==87&&t!==119||!Uc.call(r,r.previous)||qc(r.events)?n(t):(e.enter(`literalAutolink`),e.enter(`literalAutolinkWww`),e.check(Tc,e.attempt(Ec,e.attempt(Dc,a),n),n)(t))}function a(n){return e.exit(`literalAutolinkWww`),e.exit(`literalAutolink`),t(n)}}function Lc(e,t,n){let r=this,i=``,a=!1;return o;function o(t){return(t===72||t===104)&&Wc.call(r,r.previous)&&!qc(r.events)?(e.enter(`literalAutolink`),e.enter(`literalAutolinkHttp`),i+=String.fromCodePoint(t),e.consume(t),s):n(t)}function s(t){if(I(t)&&i.length<5)return i+=String.fromCodePoint(t),e.consume(t),s;if(t===58){let n=i.toLowerCase();if(n===`http`||n===`https`)return e.consume(t),c}return n(t)}function c(t){return t===47?(e.consume(t),a?l:(a=!0,c)):n(t)}function l(t){return t===null||It(t)||R(t)||Vt(t)||Bt(t)?n(t):e.attempt(Ec,e.attempt(Dc,u),n)(t)}function u(n){return e.exit(`literalAutolinkHttp`),e.exit(`literalAutolink`),t(n)}}function Rc(e,t,n){let r=0;return i;function i(t){return(t===87||t===119)&&r<3?(r++,e.consume(t),i):t===46&&r===3?(e.consume(t),a):n(t)}function a(e){return e===null?n(e):t(e)}}function zc(e,t,n){let r,i,a;return o;function o(t){return t===46||t===95?e.check(Oc,c,s)(t):t===null||R(t)||Vt(t)||t!==45&&Bt(t)?c(t):(a=!0,e.consume(t),o)}function s(t){return t===95?r=!0:(i=r,r=void 0),e.consume(t),o}function c(e){return i||r||!a?n(e):t(e)}}function Bc(e,t){let n=0,r=0;return i;function i(o){return o===40?(n++,e.consume(o),i):o===41&&r<n?a(o):o===33||o===34||o===38||o===39||o===41||o===42||o===44||o===46||o===58||o===59||o===60||o===63||o===93||o===95||o===126?e.check(Oc,t,a)(o):o===null||R(o)||Vt(o)?t(o):(e.consume(o),i)}function a(t){return t===41&&r++,e.consume(t),i}}function Vc(e,t,n){return r;function r(o){return o===33||o===34||o===39||o===41||o===42||o===44||o===46||o===58||o===59||o===63||o===95||o===126?(e.consume(o),r):o===38?(e.consume(o),a):o===93?(e.consume(o),i):o===60||o===null||R(o)||Vt(o)?t(o):n(o)}function i(e){return e===null||e===40||e===91||R(e)||Vt(e)?t(e):r(e)}function a(e){return I(e)?o(e):n(e)}function o(t){return t===59?(e.consume(t),r):I(t)?(e.consume(t),o):n(t)}}function Hc(e,t,n){return r;function r(t){return e.consume(t),i}function i(e){return Pt(e)?n(e):t(e)}}function Uc(e){return e===null||e===40||e===42||e===95||e===91||e===93||e===126||R(e)}function Wc(e){return!I(e)}function Gc(e){return!(e===47||Kc(e))}function Kc(e){return e===43||e===45||e===46||e===95||Pt(e)}function qc(e){let t=e.length,n=!1;for(;t--;){let r=e[t][1];if((r.type===`labelLink`||r.type===`labelImage`)&&!r._balanced){n=!0;break}if(r._gfmAutolinkLiteralWalkedInto){n=!1;break}}return e.length>0&&!n&&(e[e.length-1][1]._gfmAutolinkLiteralWalkedInto=!0),n}var Jc={tokenize:nl,partial:!0};function Yc(){return{document:{91:{name:`gfmFootnoteDefinition`,tokenize:$c,continuation:{tokenize:el},exit:tl}},text:{91:{name:`gfmFootnoteCall`,tokenize:Qc},93:{name:`gfmPotentialFootnoteCall`,add:`after`,tokenize:Xc,resolveTo:Zc}}}}function Xc(e,t,n){let r=this,i=r.events.length,a=r.parser.gfmFootnotes||(r.parser.gfmFootnotes=[]),o;for(;i--;){let e=r.events[i][1];if(e.type===`labelImage`){o=e;break}if(e.type===`gfmFootnoteCall`||e.type===`labelLink`||e.type===`label`||e.type===`image`||e.type===`link`)break}return s;function s(i){if(!o||!o._balanced)return n(i);let s=Nt(r.sliceSerialize({start:o.end,end:r.now()}));return s.codePointAt(0)!==94||!a.includes(s.slice(1))?n(i):(e.enter(`gfmFootnoteCallLabelMarker`),e.consume(i),e.exit(`gfmFootnoteCallLabelMarker`),t(i))}}function Zc(e,t){let n=e.length;for(;n--;)if(e[n][1].type===`labelImage`&&e[n][0]===`enter`){e[n][1];break}e[n+1][1].type=`data`,e[n+3][1].type=`gfmFootnoteCallLabelMarker`;let r={type:`gfmFootnoteCall`,start:Object.assign({},e[n+3][1].start),end:Object.assign({},e[e.length-1][1].end)},i={type:`gfmFootnoteCallMarker`,start:Object.assign({},e[n+3][1].end),end:Object.assign({},e[n+3][1].end)};i.end.column++,i.end.offset++,i.end._bufferIndex++;let a={type:`gfmFootnoteCallString`,start:Object.assign({},i.end),end:Object.assign({},e[e.length-1][1].start)},o={type:`chunkString`,contentType:`string`,start:Object.assign({},a.start),end:Object.assign({},a.end)},s=[e[n+1],e[n+2],[`enter`,r,t],e[n+3],e[n+4],[`enter`,i,t],[`exit`,i,t],[`enter`,a,t],[`enter`,o,t],[`exit`,o,t],[`exit`,a,t],e[e.length-2],e[e.length-1],[`exit`,r,t]];return e.splice(n,e.length-n+1,...s),e}function Qc(e,t,n){let r=this,i=r.parser.gfmFootnotes||(r.parser.gfmFootnotes=[]),a=0,o;return s;function s(t){return e.enter(`gfmFootnoteCall`),e.enter(`gfmFootnoteCallLabelMarker`),e.consume(t),e.exit(`gfmFootnoteCallLabelMarker`),c}function c(t){return t===94?(e.enter(`gfmFootnoteCallMarker`),e.consume(t),e.exit(`gfmFootnoteCallMarker`),e.enter(`gfmFootnoteCallString`),e.enter(`chunkString`).contentType=`string`,l):n(t)}function l(s){if(a>999||s===93&&!o||s===null||s===91||R(s))return n(s);if(s===93){e.exit(`chunkString`);let a=e.exit(`gfmFootnoteCallString`);return i.includes(Nt(r.sliceSerialize(a)))?(e.enter(`gfmFootnoteCallLabelMarker`),e.consume(s),e.exit(`gfmFootnoteCallLabelMarker`),e.exit(`gfmFootnoteCall`),t):n(s)}return R(s)||(o=!0),a++,e.consume(s),s===92?u:l}function u(t){return t===91||t===92||t===93?(e.consume(t),a++,l):l(t)}}function $c(e,t,n){let r=this,i=r.parser.gfmFootnotes||(r.parser.gfmFootnotes=[]),a,o=0,s;return c;function c(t){return e.enter(`gfmFootnoteDefinition`)._container=!0,e.enter(`gfmFootnoteDefinitionLabel`),e.enter(`gfmFootnoteDefinitionLabelMarker`),e.consume(t),e.exit(`gfmFootnoteDefinitionLabelMarker`),l}function l(t){return t===94?(e.enter(`gfmFootnoteDefinitionMarker`),e.consume(t),e.exit(`gfmFootnoteDefinitionMarker`),e.enter(`gfmFootnoteDefinitionLabelString`),e.enter(`chunkString`).contentType=`string`,u):n(t)}function u(t){if(o>999||t===93&&!s||t===null||t===91||R(t))return n(t);if(t===93){e.exit(`chunkString`);let n=e.exit(`gfmFootnoteDefinitionLabelString`);return a=Nt(r.sliceSerialize(n)),e.enter(`gfmFootnoteDefinitionLabelMarker`),e.consume(t),e.exit(`gfmFootnoteDefinitionLabelMarker`),e.exit(`gfmFootnoteDefinitionLabel`),f}return R(t)||(s=!0),o++,e.consume(t),t===92?d:u}function d(t){return t===91||t===92||t===93?(e.consume(t),o++,u):u(t)}function f(t){return t===58?(e.enter(`definitionMarker`),e.consume(t),e.exit(`definitionMarker`),i.includes(a)||i.push(a),B(e,p,`gfmFootnoteDefinitionWhitespace`)):n(t)}function p(e){return t(e)}}function el(e,t,n){return e.check(an,t,e.attempt(Jc,t,n))}function tl(e){e.exit(`gfmFootnoteDefinition`)}function nl(e,t,n){let r=this;return B(e,i,`gfmFootnoteDefinitionIndent`,5);function i(e){let i=r.events[r.events.length-1];return i&&i[1].type===`gfmFootnoteDefinitionIndent`&&i[2].sliceSerialize(i[1],!0).length===4?t(e):n(e)}}function rl(e){let t=(e||{}).singleTilde,n={name:`strikethrough`,tokenize:i,resolveAll:r};return t??=!0,{text:{126:n},insideSpan:{null:[n]},attentionMarkers:{null:[126]}};function r(e,t){let n=-1;for(;++n<e.length;)if(e[n][0]===`enter`&&e[n][1].type===`strikethroughSequenceTemporary`&&e[n][1]._close){let r=n;for(;r--;)if(e[r][0]===`exit`&&e[r][1].type===`strikethroughSequenceTemporary`&&e[r][1]._open&&e[n][1].end.offset-e[n][1].start.offset===e[r][1].end.offset-e[r][1].start.offset){e[n][1].type=`strikethroughSequence`,e[r][1].type=`strikethroughSequence`;let i={type:`strikethrough`,start:Object.assign({},e[r][1].start),end:Object.assign({},e[n][1].end)},a={type:`strikethroughText`,start:Object.assign({},e[r][1].end),end:Object.assign({},e[n][1].start)},o=[[`enter`,i,t],[`enter`,e[r][1],t],[`exit`,e[r][1],t],[`enter`,a,t]],s=t.parser.constructs.insideSpan.null;s&&Et(o,o.length,0,Zt(s,e.slice(r+1,n),t)),Et(o,o.length,0,[[`exit`,a,t],[`enter`,e[n][1],t],[`exit`,e[n][1],t],[`exit`,i,t]]),Et(e,r-1,n-r+3,o),n=r+o.length-2;break}}for(n=-1;++n<e.length;)e[n][1].type===`strikethroughSequenceTemporary`&&(e[n][1].type=`data`);return e}function i(e,n,r){let i=this.previous,a=this.events,o=0;return s;function s(t){return i===126&&a[a.length-1][1].type!==`characterEscape`?r(t):(e.enter(`strikethroughSequenceTemporary`),c(t))}function c(a){let s=Xt(i);if(a===126)return o>1?r(a):(e.consume(a),o++,c);if(o<2&&!t)return r(a);let l=e.exit(`strikethroughSequenceTemporary`),u=Xt(a);return l._open=!u||u===2&&!!s,l._close=!s||s===2&&!!u,n(a)}}}var il=class{constructor(){this.map=[]}add(e,t,n){al(this,e,t,n)}consume(e){if(this.map.sort(function(e,t){return e[0]-t[0]}),this.map.length===0)return;let t=this.map.length,n=[];for(;t>0;)--t,n.push(e.slice(this.map[t][0]+this.map[t][1]),this.map[t][2]),e.length=this.map[t][0];n.push(e.slice()),e.length=0;let r=n.pop();for(;r;){for(let t of r)e.push(t);r=n.pop()}this.map.length=0}};function al(e,t,n,r){let i=0;if(!(n===0&&r.length===0)){for(;i<e.map.length;){if(e.map[i][0]===t){e.map[i][1]+=n,e.map[i][2].push(...r);return}i+=1}e.map.push([t,n,r])}}function ol(e,t){let n=!1,r=[];for(;t<e.length;){let i=e[t];if(n){if(i[0]===`enter`)i[1].type===`tableContent`&&r.push(e[t+1][1].type===`tableDelimiterMarker`?`left`:`none`);else if(i[1].type===`tableContent`){if(e[t-1][1].type===`tableDelimiterMarker`){let e=r.length-1;r[e]=r[e]===`left`?`center`:`right`}}else if(i[1].type===`tableDelimiterRow`)break}else i[0]===`enter`&&i[1].type===`tableDelimiterRow`&&(n=!0);t+=1}return r}function sl(){return{flow:{null:{name:`table`,tokenize:cl,resolveAll:ll}}}}function cl(e,t,n){let r=this,i=0,a=0,o;return s;function s(e){let t=r.events.length-1;for(;t>-1;){let e=r.events[t][1].type;if(e===`lineEnding`||e===`linePrefix`)t--;else break}let i=t>-1?r.events[t][1].type:null,a=i===`tableHead`||i===`tableRow`?S:c;return a===S&&r.parser.lazy[r.now().line]?n(e):a(e)}function c(t){return e.enter(`tableHead`),e.enter(`tableRow`),l(t)}function l(e){return e===124?u(e):(o=!0,a+=1,u(e))}function u(t){return t===null?n(t):L(t)?a>1?(a=0,r.interrupt=!0,e.exit(`tableRow`),e.enter(`lineEnding`),e.consume(t),e.exit(`lineEnding`),p):n(t):z(t)?B(e,u,`whitespace`)(t):(a+=1,o&&(o=!1,i+=1),t===124?(e.enter(`tableCellDivider`),e.consume(t),e.exit(`tableCellDivider`),o=!0,u):(e.enter(`data`),d(t)))}function d(t){return t===null||t===124||R(t)?(e.exit(`data`),u(t)):(e.consume(t),t===92?f:d)}function f(t){return t===92||t===124?(e.consume(t),d):d(t)}function p(t){return r.interrupt=!1,r.parser.lazy[r.now().line]?n(t):(e.enter(`tableDelimiterRow`),o=!1,z(t)?B(e,m,`linePrefix`,r.parser.constructs.disable.null.includes(`codeIndented`)?void 0:4)(t):m(t))}function m(t){return t===45||t===58?g(t):t===124?(o=!0,e.enter(`tableCellDivider`),e.consume(t),e.exit(`tableCellDivider`),h):x(t)}function h(t){return z(t)?B(e,g,`whitespace`)(t):g(t)}function g(t){return t===58?(a+=1,o=!0,e.enter(`tableDelimiterMarker`),e.consume(t),e.exit(`tableDelimiterMarker`),_):t===45?(a+=1,_(t)):t===null||L(t)?b(t):x(t)}function _(t){return t===45?(e.enter(`tableDelimiterFiller`),v(t)):x(t)}function v(t){return t===45?(e.consume(t),v):t===58?(o=!0,e.exit(`tableDelimiterFiller`),e.enter(`tableDelimiterMarker`),e.consume(t),e.exit(`tableDelimiterMarker`),y):(e.exit(`tableDelimiterFiller`),y(t))}function y(t){return z(t)?B(e,b,`whitespace`)(t):b(t)}function b(n){return n===124?m(n):n===null||L(n)?!o||i!==a?x(n):(e.exit(`tableDelimiterRow`),e.exit(`tableHead`),t(n)):x(n)}function x(e){return n(e)}function S(t){return e.enter(`tableRow`),C(t)}function C(n){return n===124?(e.enter(`tableCellDivider`),e.consume(n),e.exit(`tableCellDivider`),C):n===null||L(n)?(e.exit(`tableRow`),t(n)):z(n)?B(e,C,`whitespace`)(n):(e.enter(`data`),w(n))}function w(t){return t===null||t===124||R(t)?(e.exit(`data`),C(t)):(e.consume(t),t===92?T:w)}function T(t){return t===92||t===124?(e.consume(t),w):w(t)}}function ll(e,t){let n=-1,r=!0,i=0,a=[0,0,0,0],o=[0,0,0,0],s=!1,c=0,l,u,d,f=new il;for(;++n<e.length;){let p=e[n],m=p[1];p[0]===`enter`?m.type===`tableHead`?(s=!1,c!==0&&(dl(f,t,c,l,u),u=void 0,c=0),l={type:`table`,start:Object.assign({},m.start),end:Object.assign({},m.end)},f.add(n,0,[[`enter`,l,t]])):m.type===`tableRow`||m.type===`tableDelimiterRow`?(r=!0,d=void 0,a=[0,0,0,0],o=[0,n+1,0,0],s&&(s=!1,u={type:`tableBody`,start:Object.assign({},m.start),end:Object.assign({},m.end)},f.add(n,0,[[`enter`,u,t]])),i=m.type===`tableDelimiterRow`?2:u?3:1):i&&(m.type===`data`||m.type===`tableDelimiterMarker`||m.type===`tableDelimiterFiller`)?(r=!1,o[2]===0&&(a[1]!==0&&(o[0]=o[1],d=ul(f,t,a,i,void 0,d),a=[0,0,0,0]),o[2]=n)):m.type===`tableCellDivider`&&(r?r=!1:(a[1]!==0&&(o[0]=o[1],d=ul(f,t,a,i,void 0,d)),a=o,o=[a[1],n,0,0])):m.type===`tableHead`?(s=!0,c=n):m.type===`tableRow`||m.type===`tableDelimiterRow`?(c=n,a[1]===0?o[1]!==0&&(d=ul(f,t,o,i,n,d)):(o[0]=o[1],d=ul(f,t,a,i,n,d)),i=0):i&&(m.type===`data`||m.type===`tableDelimiterMarker`||m.type===`tableDelimiterFiller`)&&(o[3]=n)}for(c!==0&&dl(f,t,c,l,u),f.consume(t.events),n=-1;++n<t.events.length;){let e=t.events[n];e[0]===`enter`&&e[1].type===`table`&&(e[1]._align=ol(t.events,n))}return e}function ul(e,t,n,r,i,a){let o=r===1?`tableHeader`:r===2?`tableDelimiter`:`tableData`;n[0]!==0&&(a.end=Object.assign({},fl(t.events,n[0])),e.add(n[0],0,[[`exit`,a,t]]));let s=fl(t.events,n[1]);if(a={type:o,start:Object.assign({},s),end:Object.assign({},s)},e.add(n[1],0,[[`enter`,a,t]]),n[2]!==0){let i=fl(t.events,n[2]),a=fl(t.events,n[3]),o={type:`tableContent`,start:Object.assign({},i),end:Object.assign({},a)};if(e.add(n[2],0,[[`enter`,o,t]]),r!==2){let r=t.events[n[2]],i=t.events[n[3]];if(r[1].end=Object.assign({},i[1].end),r[1].type=`chunkText`,r[1].contentType=`text`,n[3]>n[2]+1){let t=n[2]+1,r=n[3]-n[2]-1;e.add(t,r,[])}}e.add(n[3]+1,0,[[`exit`,o,t]])}return i!==void 0&&(a.end=Object.assign({},fl(t.events,i)),e.add(i,0,[[`exit`,a,t]]),a=void 0),a}function dl(e,t,n,r,i){let a=[],o=fl(t.events,n);i&&(i.end=Object.assign({},o),a.push([`exit`,i,t])),r.end=Object.assign({},o),a.push([`exit`,r,t]),e.add(n+1,0,a)}function fl(e,t){let n=e[t],r=n[0]===`enter`?`start`:`end`;return n[1][r]}var pl={name:`tasklistCheck`,tokenize:hl};function ml(){return{text:{91:pl}}}function hl(e,t,n){let r=this;return i;function i(t){return r.previous!==null||!r._gfmTasklistFirstContentOfListItem?n(t):(e.enter(`taskListCheck`),e.enter(`taskListCheckMarker`),e.consume(t),e.exit(`taskListCheckMarker`),a)}function a(t){return R(t)?(e.enter(`taskListCheckValueUnchecked`),e.consume(t),e.exit(`taskListCheckValueUnchecked`),o):t===88||t===120?(e.enter(`taskListCheckValueChecked`),e.consume(t),e.exit(`taskListCheckValueChecked`),o):n(t)}function o(t){return t===93?(e.enter(`taskListCheckMarker`),e.consume(t),e.exit(`taskListCheckMarker`),e.exit(`taskListCheck`),s):n(t)}function s(r){return L(r)?t(r):z(r)?e.check({tokenize:gl},t,n)(r):n(r)}}function gl(e,t,n){return B(e,r,`whitespace`);function r(e){return e===null?n(e):t(e)}}function _l(e){return kt([Pc(),Yc(),rl(e),sl(),ml()])}var vl={};function yl(e){let t=this,n=e||vl,r=t.data(),i=r.micromarkExtensions||=[],a=r.fromMarkdownExtensions||=[],o=r.toMarkdownExtensions||=[];i.push(_l(n)),a.push(Cc()),o.push(wc(n))}var bl=`# Multi-Task Learning Pipeline: Intent & Emotion Classification
 
-A deep learning system that simultaneously classifies **user intent** and **emotion** from text, powered by a dual-head RoBERTa transformer — served through a FastAPI backend and a modern React web interface.
+
+A deep learning system that simultaneously classifies **user intent** and **emotion** from text, powered by a dual-head RoBERTa transformer — served through a FastAPI backend and a modern React web interface. 
+This is my Semester Project for Advanced Generative Computing Systems, supervised by Dr. Benish Amin at the Institute of Space Technology Islamabad.
 
 ---
 
@@ -63,10 +65,10 @@ Traditional NLP pipelines treat intent detection and emotion classification as s
                    /                        \\
     ┌─────────────────────┐   ┌─────────────────────┐
     │   Intent Head        │   │   Emotion Head       │
-    │   Linear(768→151)    │   │   Linear(768→28)     │
+    │   Linear(768→151)    │   │   Linear(768→6)      │
     └─────────────────────┘   └─────────────────────┘
               │                          │
-    151 Intent Classes          28 Emotion Classes
+    151 Intent Classes           6 Emotion Classes
 \`\`\`
 
 - **Shared Encoder:** \`roberta-base\` (125M parameters), frozen bottom layers optional
@@ -81,7 +83,7 @@ Traditional NLP pipelines treat intent detection and emotion classification as s
 | Dataset | Task | Classes | Samples |
 |---|---|---|---|
 | [CLINC150](https://huggingface.co/datasets/clinc_oos) | Intent Detection | 151 | ~23,700 |
-| [GoEmotions](https://huggingface.co/datasets/go_emotions) | Emotion Classification | 28 | ~58,000 |
+| [DAIR-AI/Emotion](https://huggingface.co/datasets/dair-ai/emotion) | Emotion Classification | 6 | ~20,000 |
 
 A custom pipeline (\`create_dataset.py\`) logically combines these two datasets, assigning every text sample a valid Intent label and an Emotion label. A validation script (\`validate_dataset.py\`) checks class distributions and structural integrity before training begins.
 
@@ -91,17 +93,45 @@ A custom pipeline (\`create_dataset.py\`) logically combines these two datasets,
 
 | Metric | Score |
 |---|---|
-| **Intent Accuracy** | **89.65%** |
-| Intent Macro F1 | 0.9219 |
-| **Emotion Accuracy** | **57.79%** |
-| Emotion Macro F1 | 0.4667 |
-| Combined Score | 0.6816 |
+| **Intent Accuracy** | **89.04%** |
+| Intent Macro F1 | 0.9189 |
+| **Emotion Accuracy** | **92.70%** |
+| Emotion Macro F1 | 0.8824 |
+| Combined Score | 0.8864 |
 
-Training was performed for **5 epochs** on an **NVIDIA RTX 2080 (8GB VRAM)** using FP16 mixed precision.
+Training was performed for **4 epochs** on an **NVIDIA RTX 2080 (8GB VRAM)** using FP16 mixed precision.
 
 ### Learning Curves
 
 ![Learning Curves](evaluation/learning_curves.png)
+
+### Experiment Comparison: GoEmotions vs DAIR-AI/Emotion
+
+Initially, the model was trained using the **GoEmotions** dataset (28 classes). We then switched to the **DAIR-AI/Emotion** dataset (6 classes) to balance the data distribution alongside the CLINC150 dataset and simplify the emotion taxonomy. This architectural shift resulted in a massive performance boost for emotion classification.
+
+#### Dataset Composition
+
+**Experiment 1 (CLINC150 + GoEmotions)**
+- **Train:** 58,660 samples (15,250 Intent + 43,410 Emotion)
+- **Validation:** 8,526 samples (3,100 Intent + 5,426 Emotion)
+- **Test:** 10,927 samples (5,500 Intent + 5,427 Emotion)
+
+**Experiment 2 (CLINC150 + DAIR-AI/Emotion)**
+- **Train:** 31,250 samples (15,250 Intent + 16,000 Emotion)
+  - *Intent Distribution:* Perfectly balanced (100 samples per standard class, 250 for \`oos\`).
+  - *Emotion Distribution:* \`joy\` (5,362), \`sadness\` (4,666), \`anger\` (2,159), \`fear\` (1,937), \`love\` (1,304), \`surprise\` (572).
+- **Validation:** 5,100 samples (3,100 Intent + 2,000 Emotion)
+- **Test:** 7,500 samples (5,500 Intent + 2,000 Emotion)
+
+#### Performance Comparison
+
+| Metric | Exp 1 (GoEmotions) | Exp 2 (DAIR-AI) | Improvement |
+|---|---|---|---|
+| **Intent Accuracy** | 89.65% | 89.04% | -0.61% |
+| **Intent Macro F1** | 0.9219 | 0.9189 | -0.0030 |
+| **Emotion Accuracy** | 57.79% | **92.70%** | **+34.91%** |
+| **Emotion Macro F1** | 0.4667 | **0.8824** | **+0.4157** |
+| **Combined Score** | 0.6816 | **0.8864** | **+0.2048** |
 
 ---
 
@@ -110,7 +140,7 @@ Training was performed for **5 epochs** on an **NVIDIA RTX 2080 (8GB VRAM)** usi
 | Parameter | Value |
 |---|---|
 | Base Model | \`roberta-base\` |
-| Epochs | 5 |
+| Epochs | 4 |
 | Batch Size | 32 |
 | Learning Rate | 2e-5 |
 | Max Token Length | 128 |
@@ -189,7 +219,7 @@ pip install -r backend/requirements.txt
 ### 3. Prepare the Dataset
 
 \`\`\`bash
-# Generate the combined MTL dataset from CLINC150 + GoEmotions
+# Generate the combined MTL dataset from CLINC150 + DAIR-AI/Emotion
 python create_dataset.py
 
 # Validate the generated dataset
@@ -224,7 +254,7 @@ You will be prompted to enter any text. The model will output the predicted Inte
 > Enter text: I need help tracking my package
 
   Intent  : track_package  (97.3%)
-  Emotion : curiosity  (62.1%)
+  Emotion : fear  (62.1%)
 \`\`\`
 
 ### 7. Run the Web Application
@@ -249,7 +279,7 @@ Open \`http://localhost:5173\` in your browser.
 
 - **📝 Text Analysis** — Enter any text review and receive dual predictions instantly
 - **📊 Confidence Scores** — Animated progress bars display prediction confidence
-- **🏷️ Label Reference** — Scrollable side-by-side lists of all 151 Intent and 28 Emotion labels
+- **🏷️ Label Reference** — Scrollable side-by-side lists of all 151 Intent and 6 Emotion labels
 - **📈 InfoGraphics Modal** — View training config, datasets, evaluation scores, learning curves, and the detailed classification report — all accessible via the top-right button
 
 ---
@@ -296,10 +326,21 @@ curl -X POST http://localhost:8000/predict \\
 | Layer | Technology |
 |---|---|
 | Model | PyTorch, HuggingFace Transformers (\`roberta-base\`) |
-| Dataset | HuggingFace Datasets (CLINC150, GoEmotions) |
+| Dataset | HuggingFace Datasets (CLINC150, DAIR-AI/Emotion) |
 | Backend API | FastAPI, Uvicorn, Pydantic |
 | Frontend | React 18, Vite, Vanilla CSS |
 | Evaluation | Scikit-learn, Matplotlib |
+
+
+
+## Acknowledgments
+
+I would like to express my gratitude to Dr. Benish Amin for her guidance and support throughout this project.
+
+## License
+
+This is a gift from the Institute of Space Technology Islamabad, to the AI community. 
+Developed by Ubaid Ur Rehman.
 `,xl=({isOpen:e,onClose:t})=>e?(0,x.jsx)(`div`,{className:`modal-overlay`,onClick:t,children:(0,x.jsxs)(`div`,{className:`modal-content`,onClick:e=>e.stopPropagation(),style:{maxWidth:`900px`,width:`95%`,maxHeight:`90vh`,overflowY:`auto`},children:[(0,x.jsx)(`button`,{className:`modal-close`,onClick:t,style:{position:`sticky`,top:`10px`,float:`right`},children:`×`}),(0,x.jsx)(`div`,{className:`markdown-body`,style:{padding:`20px`,textAlign:`left`,borderRadius:`8px`},children:(0,x.jsx)(go,{remarkPlugins:[yl],children:bl})})]})}):null,Sl=`label_id,label_name\r
 0,restaurant_reviews\r
 1,nutrition_info\r
@@ -454,33 +495,11 @@ curl -X POST http://localhost:8000/predict \\
 150,change_volume\r
 `,Cl=()=>{let[e,t]=(0,v.useState)([]);return(0,v.useEffect)(()=>{t(Sl.trim().split(`
 `).slice(1).map(e=>e.split(`,`)[1].trim()))},[]),!e||e.length===0?null:(0,x.jsxs)(`div`,{className:`labels-column`,children:[(0,x.jsx)(`h3`,{children:`Available Intents`}),(0,x.jsxs)(`div`,{className:`dataset-meta`,style:{fontSize:`0.85em`,color:`#666`,marginBottom:`15px`},children:[(0,x.jsxs)(`p`,{children:[(0,x.jsx)(`strong`,{children:`Dataset Name:`}),` CLINC150 / Customer Intents`]}),(0,x.jsxs)(`p`,{children:[(0,x.jsx)(`strong`,{children:`Dataset Size:`}),` `,e.length,` classes (22,500+ samples)`]}),(0,x.jsxs)(`p`,{children:[(0,x.jsx)(`strong`,{children:`Creator:`}),` CLINC`]})]}),(0,x.jsx)(`div`,{className:`labels-list`,children:e.map((e,t)=>(0,x.jsx)(`span`,{className:`label-badge`,children:e.replace(/_/g,` `)},t))})]})},wl=`label_id,label_name\r
-0,admiration\r
-1,amusement\r
-2,anger\r
-3,annoyance\r
-4,approval\r
-5,caring\r
-6,confusion\r
-7,curiosity\r
-8,desire\r
-9,disappointment\r
-10,disapproval\r
-11,disgust\r
-12,embarrassment\r
-13,excitement\r
-14,fear\r
-15,gratitude\r
-16,grief\r
-17,joy\r
-18,love\r
-19,nervousness\r
-20,optimism\r
-21,pride\r
-22,realization\r
-23,relief\r
-24,remorse\r
-25,sadness\r
-26,surprise\r
-27,neutral\r
+0,sadness\r
+1,joy\r
+2,love\r
+3,anger\r
+4,fear\r
+5,surprise\r
 `,Tl=()=>{let[e,t]=(0,v.useState)([]);return(0,v.useEffect)(()=>{t(wl.trim().split(`
-`).slice(1).map(e=>e.split(`,`)[1].trim()))},[]),!e||e.length===0?null:(0,x.jsxs)(`div`,{className:`labels-column`,children:[(0,x.jsx)(`h3`,{children:`Available Emotions`}),(0,x.jsxs)(`div`,{className:`dataset-meta`,style:{fontSize:`0.85em`,color:`#666`,marginBottom:`15px`},children:[(0,x.jsxs)(`p`,{children:[(0,x.jsx)(`strong`,{children:`Dataset Name:`}),` GoEmotions`]}),(0,x.jsxs)(`p`,{children:[(0,x.jsx)(`strong`,{children:`Dataset Size:`}),` `,e.length,` classes (58,000+ Reddit comments)`]}),(0,x.jsxs)(`p`,{children:[(0,x.jsx)(`strong`,{children:`Creator:`}),` Google Research`]})]}),(0,x.jsx)(`div`,{className:`labels-list`,children:e.map((e,t)=>(0,x.jsx)(`span`,{className:`label-badge emotion-badge`,children:e.replace(/_/g,` `)},t))})]})},El=`/MTL/assets/logo-CFKvO_OE.png`;function Dl(){let[e,t]=(0,v.useState)(``),[n,r]=(0,v.useState)(`http://localhost:8000`),[i,a]=(0,v.useState)(null),[o,s]=(0,v.useState)(!1),[c,l]=(0,v.useState)(null),[u,d]=(0,v.useState)(!1);return(0,x.jsxs)(`div`,{className:`app-container`,children:[(0,x.jsx)(`button`,{className:`btn-info`,onClick:()=>d(!0),children:`InfoGraphics`}),(0,x.jsx)(xl,{isOpen:u,onClose:()=>d(!1)}),(0,x.jsxs)(`header`,{className:`header`,children:[(0,x.jsx)(`h1`,{children:`Multi-Task Learning UI`}),(0,x.jsx)(`p`,{children:`Intent & Emotion Classification`})]}),(0,x.jsxs)(`main`,{children:[(0,x.jsxs)(`section`,{className:`input-section`,children:[(0,x.jsxs)(`div`,{className:`backend-url-input`,style:{marginBottom:`15px`},children:[(0,x.jsx)(`label`,{htmlFor:`backendUrl`,style:{marginRight:`10px`,fontWeight:`bold`},children:`Backend URL:`}),(0,x.jsx)(`input`,{id:`backendUrl`,type:`text`,value:n,onChange:e=>r(e.target.value),placeholder:`https://your-ngrok-url.ngrok.io`,style:{width:`100%`,padding:`10px`,borderRadius:`8px`,border:`1px solid #ccc`,marginTop:`5px`}})]}),(0,x.jsx)(`textarea`,{placeholder:`Type your review or text here...`,value:e,onChange:e=>t(e.target.value)}),(0,x.jsx)(`button`,{className:`btn-submit`,onClick:async()=>{if(e.trim()){s(!0),l(null);try{let t=await fetch(`${n}/predict`,{method:`POST`,headers:{"Content-Type":`application/json`},body:JSON.stringify({text:e})});if(!t.ok)throw Error(`Failed to get prediction`);a(await t.json())}catch(e){console.error(e),l(`An error occurred while connecting to the backend. Is it running?`)}finally{s(!1)}}},disabled:o||!e.trim(),children:o?(0,x.jsx)(`span`,{className:`loading-spinner`}):`Analyze`}),c&&(0,x.jsx)(`p`,{style:{color:`red`,marginTop:`10px`},children:c})]}),i&&(0,x.jsxs)(`section`,{className:`prediction-container`,children:[(0,x.jsx)(S,{title:`Predicted Intent`,value:i.intent,confidence:i.intent_confidence}),(0,x.jsx)(S,{title:`Predicted Emotion`,value:i.emotion,confidence:i.emotion_confidence})]}),(0,x.jsxs)(`section`,{className:`labels-section`,children:[(0,x.jsx)(Cl,{}),(0,x.jsx)(Tl,{})]})]}),(0,x.jsxs)(`footer`,{className:`app-footer`,style:{marginTop:`40px`,padding:`20px`,borderTop:`1px solid #eee`,display:`flex`,alignItems:`center`,justifyContent:`center`,gap:`30px`,backgroundColor:`#f9f9f9`,borderRadius:`8px`},children:[(0,x.jsx)(`img`,{src:El,alt:`IST Logo`,style:{width:`100px`,height:`auto`}}),(0,x.jsxs)(`div`,{style:{textAlign:`left`,fontSize:`0.95em`,color:`#444`,lineHeight:`1.4`},children:[(0,x.jsxs)(`p`,{style:{margin:`0`},children:[(0,x.jsx)(`strong`,{children:`Course:`}),` Advanced Generative Computing Systems`]}),(0,x.jsxs)(`p`,{style:{margin:`0`},children:[(0,x.jsx)(`strong`,{children:`Submitted to:`}),` Dr. Benish Amin`]}),(0,x.jsxs)(`p`,{style:{margin:`0`},children:[(0,x.jsx)(`strong`,{children:`Developed By:`}),` Ubaid Ur Rehman`]}),(0,x.jsx)(`p`,{style:{margin:`0`,color:`#666`},children:`Institute of Space Technology Islamabad Pakistan`})]})]})]})}(0,y.createRoot)(document.getElementById(`root`)).render((0,x.jsx)(v.StrictMode,{children:(0,x.jsx)(Dl,{})}));
+`).slice(1).map(e=>e.split(`,`)[1].trim()))},[]),!e||e.length===0?null:(0,x.jsxs)(`div`,{className:`labels-column`,children:[(0,x.jsx)(`h3`,{children:`Available Emotions`}),(0,x.jsxs)(`div`,{className:`dataset-meta`,style:{fontSize:`0.85em`,color:`#666`,marginBottom:`15px`},children:[(0,x.jsxs)(`p`,{children:[(0,x.jsx)(`strong`,{children:`Dataset Name:`}),` DAIR-AI / Emotion`]}),(0,x.jsxs)(`p`,{children:[(0,x.jsx)(`strong`,{children:`Dataset Size:`}),` `,e.length,` classes (20,000 Twitter samples)`]}),(0,x.jsxs)(`p`,{children:[(0,x.jsx)(`strong`,{children:`Creator:`}),` DAIR.AI`]})]}),(0,x.jsx)(`div`,{className:`labels-list`,children:e.map((e,t)=>(0,x.jsx)(`span`,{className:`label-badge emotion-badge`,children:e.replace(/_/g,` `)},t))})]})},El=`/MTL/assets/logo-CFKvO_OE.png`;function Dl(){let[e,t]=(0,v.useState)(``),[n,r]=(0,v.useState)(`http://localhost:8000`),[i,a]=(0,v.useState)(null),[o,s]=(0,v.useState)(!1),[c,l]=(0,v.useState)(null),[u,d]=(0,v.useState)(!1);return(0,x.jsxs)(`div`,{className:`app-container`,children:[(0,x.jsx)(`button`,{className:`btn-info`,onClick:()=>d(!0),children:`InfoGraphics`}),(0,x.jsx)(xl,{isOpen:u,onClose:()=>d(!1)}),(0,x.jsxs)(`header`,{className:`header`,children:[(0,x.jsx)(`h1`,{children:`Multi-Task Learning UI`}),(0,x.jsx)(`p`,{children:`Intent & Emotion Classification`})]}),(0,x.jsxs)(`main`,{children:[(0,x.jsxs)(`section`,{className:`input-section`,children:[(0,x.jsxs)(`div`,{className:`backend-url-input`,style:{marginBottom:`15px`},children:[(0,x.jsx)(`label`,{htmlFor:`backendUrl`,style:{marginRight:`10px`,fontWeight:`bold`},children:`Backend URL:`}),(0,x.jsx)(`input`,{id:`backendUrl`,type:`text`,value:n,onChange:e=>r(e.target.value),placeholder:`https://your-ngrok-url.ngrok.io`,style:{width:`100%`,padding:`10px`,borderRadius:`8px`,border:`1px solid #ccc`,marginTop:`5px`}})]}),(0,x.jsx)(`textarea`,{placeholder:`Type your review or text here...`,value:e,onChange:e=>t(e.target.value)}),(0,x.jsx)(`button`,{className:`btn-submit`,onClick:async()=>{if(e.trim()){s(!0),l(null);try{let t=await fetch(`${n}/predict`,{method:`POST`,headers:{"Content-Type":`application/json`},body:JSON.stringify({text:e})});if(!t.ok)throw Error(`Failed to get prediction`);a(await t.json())}catch(e){console.error(e),l(`An error occurred while connecting to the backend. Is it running?`)}finally{s(!1)}}},disabled:o||!e.trim(),children:o?(0,x.jsx)(`span`,{className:`loading-spinner`}):`Analyze`}),c&&(0,x.jsx)(`p`,{style:{color:`red`,marginTop:`10px`},children:c})]}),i&&(0,x.jsxs)(`section`,{className:`prediction-container`,children:[(0,x.jsx)(S,{title:`Predicted Intent`,value:i.intent,confidence:i.intent_confidence}),(0,x.jsx)(S,{title:`Predicted Emotion`,value:i.emotion,confidence:i.emotion_confidence})]}),(0,x.jsxs)(`section`,{className:`labels-section`,children:[(0,x.jsx)(Cl,{}),(0,x.jsx)(Tl,{})]})]}),(0,x.jsxs)(`footer`,{className:`app-footer`,style:{marginTop:`40px`,padding:`20px`,borderTop:`1px solid #eee`,display:`flex`,alignItems:`center`,justifyContent:`center`,gap:`30px`,backgroundColor:`#f9f9f9`,borderRadius:`8px`},children:[(0,x.jsx)(`img`,{src:El,alt:`IST Logo`,style:{width:`100px`,height:`auto`}}),(0,x.jsxs)(`div`,{style:{textAlign:`left`,fontSize:`0.95em`,color:`#444`,lineHeight:`1.4`},children:[(0,x.jsxs)(`p`,{style:{margin:`0`},children:[(0,x.jsx)(`strong`,{children:`Course:`}),` Advanced Generative Computing Systems`]}),(0,x.jsxs)(`p`,{style:{margin:`0`},children:[(0,x.jsx)(`strong`,{children:`Submitted to:`}),` Dr. Benish Amin`]}),(0,x.jsxs)(`p`,{style:{margin:`0`},children:[(0,x.jsx)(`strong`,{children:`Developed By:`}),` Ubaid Ur Rehman`]}),(0,x.jsx)(`p`,{style:{margin:`0`,color:`#666`},children:`Institute of Space Technology Islamabad Pakistan`})]})]})]})}(0,y.createRoot)(document.getElementById(`root`)).render((0,x.jsx)(v.StrictMode,{children:(0,x.jsx)(Dl,{})}));
