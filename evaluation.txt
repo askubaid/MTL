@@ -1,223 +1,196 @@
+
 ==================================================
   INTENT HEAD (CLINC150) Metrics
 ==================================================
-  Accuracy     : 89.65%
-  Macro F1     : 0.9219
+  Accuracy     : 89.04%
+  Macro F1     : 0.9189
 
   Per-Class Report:
                            precision    recall  f1-score   support
 
-       restaurant_reviews       0.87      0.87      0.87        30
-           nutrition_info       0.65      1.00      0.79        30
-          account_blocked       0.94      0.97      0.95        30
-           oil_change_how       0.80      0.93      0.86        30
-                     time       0.88      1.00      0.94        30
+       restaurant_reviews       0.78      0.83      0.81        30
+           nutrition_info       0.79      1.00      0.88        30
+          account_blocked       0.90      0.90      0.90        30
+           oil_change_how       0.85      0.97      0.91        30
+                     time       0.91      1.00      0.95        30
                   weather       0.81      1.00      0.90        30
-           redeem_rewards       0.96      0.83      0.89        30
-            interest_rate       0.72      0.97      0.83        30
-                 gas_type       0.97      1.00      0.98        30
-      accept_reservations       0.93      0.90      0.92        30
-               smart_home       0.75      1.00      0.86        30
-                user_name       0.94      0.97      0.95        30
-         report_lost_card       0.93      0.93      0.93        30
-                   repeat       0.93      0.93      0.93        30
-             whisper_mode       0.91      1.00      0.95        30
-    what_are_your_hobbies       0.88      1.00      0.94        30
-                    order       0.58      0.93      0.72        30
-               jump_start       0.86      1.00      0.92        30
-         schedule_meeting       0.79      1.00      0.88        30
-         meeting_schedule       0.93      0.90      0.92        30
-           freeze_account       0.88      1.00      0.94        30
-                what_song       0.86      1.00      0.92        30
-          meaning_of_life       0.97      1.00      0.98        30
-   restaurant_reservation       0.85      0.93      0.89        30
-                  traffic       0.77      1.00      0.87        30
-                make_call       0.78      0.93      0.85        30
-                     text       0.82      0.93      0.88        30
-             bill_balance       0.86      0.83      0.85        30
-     improve_credit_score       0.91      0.97      0.94        30
-          change_language       0.91      0.97      0.94        30
+           redeem_rewards       0.93      0.87      0.90        30
+            interest_rate       0.81      0.97      0.88        30
+                 gas_type       1.00      1.00      1.00        30
+      accept_reservations       0.90      0.90      0.90        30
+               smart_home       0.77      1.00      0.87        30
+                user_name       0.93      0.93      0.93        30
+         report_lost_card       0.90      0.90      0.90        30
+                   repeat       0.86      1.00      0.92        30
+             whisper_mode       0.94      1.00      0.97        30
+    what_are_your_hobbies       0.91      1.00      0.95        30
+                    order       0.53      0.90      0.67        30
+               jump_start       0.77      1.00      0.87        30
+         schedule_meeting       0.83      1.00      0.91        30
+         meeting_schedule       0.82      0.90      0.86        30
+           freeze_account       0.83      1.00      0.91        30
+                what_song       0.94      1.00      0.97        30
+          meaning_of_life       0.97      0.97      0.97        30
+   restaurant_reservation       0.82      0.93      0.88        30
+                  traffic       0.86      1.00      0.92        30
+                make_call       0.62      0.97      0.75        30
+                     text       0.75      0.90      0.82        30
+             bill_balance       0.82      0.93      0.88        30
+     improve_credit_score       0.88      0.93      0.90        30
+          change_language       0.86      1.00      0.92        30
                        no       0.97      1.00      0.98        30
-   measurement_conversion       0.97      0.93      0.95        30
-                    timer       0.91      0.97      0.94        30
+   measurement_conversion       0.93      0.93      0.93        30
+                    timer       0.97      0.97      0.97        30
                 flip_coin       1.00      1.00      1.00        30
-         do_you_have_pets       0.94      1.00      0.97        30
-                  balance       0.88      0.97      0.92        30
+         do_you_have_pets       0.88      1.00      0.94        30
+                  balance       0.94      1.00      0.97        30
                 tell_joke       1.00      1.00      1.00        30
-         last_maintenance       0.86      1.00      0.92        30
-            exchange_rate       0.83      1.00      0.91        30
-                     uber       0.91      1.00      0.95        30
-               car_rental       0.81      1.00      0.90        30
-             credit_limit       0.93      0.93      0.93        30
-                      oos       0.98      0.61      0.75      1000
-            shopping_list       0.82      0.93      0.88        30
-          expiration_date       1.00      0.97      0.98        30
-                  routing       1.00      1.00      1.00        30
-          meal_suggestion       0.85      0.77      0.81        30
+         last_maintenance       0.88      1.00      0.94        30
+            exchange_rate       0.97      0.97      0.97        30
+                     uber       0.94      1.00      0.97        30
+               car_rental       0.78      0.97      0.87        30
+             credit_limit       0.88      1.00      0.94        30
+                      oos       0.97      0.58      0.73      1000
+            shopping_list       0.76      0.83      0.79        30
+          expiration_date       0.97      0.97      0.97        30
+                  routing       0.97      1.00      0.98        30
+          meal_suggestion       0.87      0.87      0.87        30
               tire_change       0.97      0.97      0.97        30
-                todo_list       0.91      0.97      0.94        30
-            card_declined       1.00      0.93      0.97        30
-          rewards_balance       0.83      1.00      0.91        30
-            change_accent       1.00      1.00      1.00        30
-                 vaccines       0.83      1.00      0.91        30
-          reminder_update       1.00      0.80      0.89        30
-                food_last       0.88      0.97      0.92        30
+                todo_list       0.88      1.00      0.94        30
+            card_declined       1.00      1.00      1.00        30
+          rewards_balance       0.88      1.00      0.94        30
+            change_accent       0.94      1.00      0.97        30
+                 vaccines       0.81      1.00      0.90        30
+          reminder_update       0.93      0.87      0.90        30
+                food_last       0.86      1.00      0.92        30
            change_ai_name       0.83      0.97      0.89        30
-                 bill_due       0.75      1.00      0.86        30
-      who_do_you_work_for       0.84      0.90      0.87        30
-           share_location       0.85      0.93      0.89        30
+                 bill_due       0.85      0.93      0.89        30
+      who_do_you_work_for       0.81      0.83      0.82        30
+           share_location       0.82      0.93      0.88        30
        international_visa       1.00      1.00      1.00        30
-                 calendar       0.92      0.77      0.84        30
-                translate       0.91      1.00      0.95        30
-                 carry_on       1.00      0.93      0.97        30
-              book_flight       0.97      0.97      0.97        30
-         insurance_change       0.88      0.93      0.90        30
-         todo_list_update       0.88      1.00      0.94        30
-                 timezone       1.00      0.93      0.97        30
-       cancel_reservation       0.88      1.00      0.94        30
-             transactions       1.00      0.83      0.91        30
+                 calendar       0.96      0.80      0.87        30
+                translate       0.94      1.00      0.97        30
+                 carry_on       1.00      0.97      0.98        30
+              book_flight       0.97      0.93      0.95        30
+         insurance_change       0.78      0.97      0.87        30
+         todo_list_update       0.97      1.00      0.98        30
+                 timezone       1.00      0.97      0.98        30
+       cancel_reservation       0.94      1.00      0.97        30
+             transactions       0.92      0.77      0.84        30
              credit_score       0.97      0.97      0.97        30
-             report_fraud       0.90      0.93      0.92        30
-         spending_history       0.81      0.97      0.88        30
-               directions       0.67      1.00      0.80        30
-                 spelling       0.78      0.97      0.87        30
-                insurance       0.88      1.00      0.94        30
-        what_is_your_name       0.90      0.93      0.92        30
-                 reminder       0.88      1.00      0.94        30
+             report_fraud       0.86      0.83      0.85        30
+         spending_history       0.72      0.97      0.83        30
+               directions       0.58      1.00      0.73        30
+                 spelling       0.88      0.97      0.92        30
+                insurance       1.00      1.00      1.00        30
+        what_is_your_name       0.96      0.90      0.93        30
+                 reminder       0.94      1.00      0.97        30
        where_are_you_from       1.00      0.97      0.98        30
-                 distance       0.93      0.87      0.90        30
-                   payday       0.97      0.93      0.95        30
-            flight_status       0.88      1.00      0.94        30
-               find_phone       0.83      1.00      0.91        30
-                 greeting       0.91      1.00      0.95        30
+                 distance       0.90      0.93      0.92        30
+                   payday       1.00      0.97      0.98        30
+            flight_status       0.94      1.00      0.97        30
+               find_phone       0.97      1.00      0.98        30
+                 greeting       0.94      1.00      0.97        30
                     alarm       0.97      1.00      0.98        30
-             order_status       0.88      1.00      0.94        30
-      confirm_reservation       0.91      1.00      0.95        30
-                cook_time       1.00      0.97      0.98        30
-             damaged_card       0.86      1.00      0.92        30
-           reset_settings       1.00      1.00      1.00        30
-               pin_change       1.00      0.83      0.91        30
-replacement_card_duration       0.84      0.90      0.87        30
-                 new_card       0.91      1.00      0.95        30
-                roll_dice       1.00      1.00      1.00        30
+             order_status       0.94      0.97      0.95        30
+      confirm_reservation       0.94      0.97      0.95        30
+                cook_time       0.94      0.97      0.95        30
+             damaged_card       0.88      1.00      0.94        30
+           reset_settings       0.97      1.00      0.98        30
+               pin_change       0.93      0.83      0.88        30
+replacement_card_duration       0.81      0.87      0.84        30
+                 new_card       0.81      0.97      0.88        30
+                roll_dice       0.97      1.00      0.98        30
                    income       0.85      0.97      0.91        30
-                    taxes       0.94      1.00      0.97        30
-                     date       1.00      0.97      0.98        30
-             who_made_you       0.79      1.00      0.88        30
-              pto_request       0.97      0.97      0.97        30
+                    taxes       0.97      1.00      0.98        30
+                     date       0.97      0.97      0.97        30
+             who_made_you       0.86      1.00      0.92        30
+              pto_request       0.82      0.90      0.86        30
             tire_pressure       0.94      1.00      0.97        30
-          how_old_are_you       0.91      1.00      0.95        30
-            rollover_401k       1.00      1.00      1.00        30
-       pto_request_status       0.97      0.97      0.97        30
+          how_old_are_you       0.94      1.00      0.97        30
+            rollover_401k       0.97      1.00      0.98        30
+       pto_request_status       0.97      0.93      0.95        30
                  how_busy       0.96      0.90      0.93        30
-       application_status       1.00      1.00      1.00        30
-                   recipe       0.90      0.90      0.90        30
-          calendar_update       0.82      0.93      0.88        30
-               play_music       0.88      1.00      0.94        30
-                      yes       0.93      0.87      0.90        30
-           direct_deposit       0.88      1.00      0.94        30
+       application_status       0.94      1.00      0.97        30
+                   recipe       0.74      0.97      0.84        30
+          calendar_update       0.85      0.93      0.89        30
+               play_music       0.79      1.00      0.88        30
+                      yes       1.00      0.83      0.91        30
+           direct_deposit       0.86      1.00      0.92        30
       credit_limit_change       0.91      0.97      0.94        30
-                      gas       0.91      1.00      0.95        30
-                 pay_bill       0.90      0.90      0.90        30
-         ingredients_list       0.78      0.93      0.85        30
-             lost_luggage       0.94      1.00      0.97        30
-                  goodbye       0.96      0.83      0.89        30
-       what_can_i_ask_you       0.88      0.93      0.90        30
-               book_hotel       1.00      1.00      1.00        30
-            are_you_a_bot       0.91      1.00      0.95        30
+                      gas       0.94      1.00      0.97        30
+                 pay_bill       1.00      0.90      0.95        30
+         ingredients_list       0.82      0.90      0.86        30
+             lost_luggage       0.97      1.00      0.98        30
+                  goodbye       1.00      1.00      1.00        30
+       what_can_i_ask_you       1.00      0.93      0.97        30
+               book_hotel       0.97      1.00      0.98        30
+            are_you_a_bot       0.83      0.97      0.89        30
                 next_song       1.00      1.00      1.00        30
-             change_speed       0.97      0.97      0.97        30
-                plug_type       0.88      0.93      0.90        30
-                    maybe       0.93      0.93      0.93        30
-                       w2       0.97      1.00      0.98        30
+             change_speed       0.91      0.97      0.94        30
+                plug_type       0.78      0.93      0.85        30
+                    maybe       0.97      0.97      0.97        30
+                       w2       0.91      1.00      0.95        30
           oil_change_when       0.80      0.93      0.86        30
-                thank_you       0.82      0.93      0.88        30
-     shopping_list_update       0.97      0.97      0.97        30
-              pto_balance       0.85      0.97      0.91        30
-             order_checks       0.97      1.00      0.98        30
-             travel_alert       0.94      1.00      0.97        30
-                 fun_fact       0.88      0.97      0.92        30
-              sync_device       0.73      1.00      0.85        30
-     schedule_maintenance       0.82      0.90      0.86        30
-                      apr       0.82      0.77      0.79        30
+                thank_you       0.97      0.97      0.97        30
+     shopping_list_update       0.97      0.93      0.95        30
+              pto_balance       0.84      0.90      0.87        30
+             order_checks       1.00      1.00      1.00        30
+             travel_alert       1.00      1.00      1.00        30
+                 fun_fact       0.81      1.00      0.90        30
+              sync_device       0.65      1.00      0.79        30
+     schedule_maintenance       0.87      0.90      0.89        30
+                      apr       0.83      0.67      0.74        30
                  transfer       0.91      0.97      0.94        30
-  ingredient_substitution       1.00      1.00      1.00        30
-                 calories       0.91      1.00      0.95        30
-         current_location       0.78      0.97      0.87        30
-       international_fees       0.94      1.00      0.97        30
+  ingredient_substitution       0.88      1.00      0.94        30
+                 calories       0.83      1.00      0.91        30
+         current_location       0.79      1.00      0.88        30
+       international_fees       0.86      1.00      0.92        30
                calculator       0.85      0.93      0.89        30
                definition       0.88      0.97      0.92        30
-             next_holiday       0.88      0.97      0.92        30
+             next_holiday       0.91      0.97      0.94        30
           update_playlist       1.00      1.00      1.00        30
-                      mpg       0.81      1.00      0.90        30
-              min_payment       0.91      0.97      0.94        30
-         change_user_name       0.91      0.97      0.94        30
-    restaurant_suggestion       0.76      0.93      0.84        30
-      travel_notification       1.00      0.97      0.98        30
-                   cancel       0.77      1.00      0.87        30
-                 pto_used       0.78      0.97      0.87        30
-        travel_suggestion       0.73      1.00      0.85        30
-            change_volume       1.00      0.83      0.91        30
+                      mpg       0.83      1.00      0.91        30
+              min_payment       0.97      0.97      0.97        30
+         change_user_name       0.97      0.93      0.95        30
+    restaurant_suggestion       0.85      0.97      0.91        30
+      travel_notification       0.94      0.97      0.95        30
+                   cancel       0.75      1.00      0.86        30
+                 pto_used       0.74      0.93      0.82        30
+        travel_suggestion       0.70      1.00      0.82        30
+            change_volume       0.89      0.83      0.86        30
 
-                 accuracy                           0.90      5500
-                macro avg       0.90      0.96      0.92      5500
-             weighted avg       0.91      0.90      0.89      5500
+                 accuracy                           0.89      5500
+                macro avg       0.89      0.96      0.92      5500
+             weighted avg       0.91      0.89      0.89      5500
 
 
 ==================================================
   EMOTION HEAD (GoEmotions) Metrics
 ==================================================
-  Accuracy     : 57.79%
-  Macro F1     : 0.4667
+  Accuracy     : 92.70%
+  Macro F1     : 0.8824
 
   Per-Class Report:
-                precision    recall  f1-score   support
+              precision    recall  f1-score   support
 
-    admiration       0.64      0.78      0.70       504
-     amusement       0.76      0.88      0.82       252
-         anger       0.48      0.56      0.52       197
-     annoyance       0.38      0.20      0.26       286
-      approval       0.46      0.41      0.44       318
-        caring       0.36      0.37      0.37       114
-     confusion       0.42      0.45      0.44       139
-     curiosity       0.50      0.38      0.43       233
-        desire       0.62      0.42      0.50        74
-disappointment       0.40      0.30      0.34       127
-   disapproval       0.44      0.37      0.40       220
-       disgust       0.47      0.45      0.46        84
- embarrassment       0.64      0.47      0.54        30
-    excitement       0.38      0.42      0.40        84
-          fear       0.60      0.77      0.67        74
-     gratitude       0.88      0.76      0.82       288
-          fear       0.60      0.77      0.67        74
-     gratitude       0.88      0.76      0.82       288
-     gratitude       0.88      0.76      0.82       288
-         grief       0.00      0.00      0.00         6
-           joy       0.52      0.48      0.50       116
-          love       0.65      0.78      0.71       169
-           joy       0.52      0.48      0.50       116
-          love       0.65      0.78      0.71       169
-          love       0.65      0.78      0.71       169
-   nervousness       0.43      0.19      0.26        16
-      optimism       0.57      0.52      0.54       120
-         pride       1.00      0.12      0.22         8
-   realization       0.31      0.14      0.19       109
-        relief       1.00      0.14      0.25         7
-       remorse       0.61      0.78      0.69        46
-       sadness       0.57      0.43      0.49       108
-      surprise       0.44      0.48      0.46        92
-       neutral       0.61      0.70      0.65      1606
+     sadness       0.97      0.96      0.96       581
+         joy       0.95      0.95      0.95       695
+        love       0.84      0.82      0.83       159
+       anger       0.91      0.95      0.93       275
+        fear       0.90      0.87      0.89       224
+    surprise       0.73      0.74      0.74        66
 
-      accuracy                           0.58      5427
-     macro avg       0.54      0.46      0.47      5427
-  weighted avg       0.57      0.58      0.56      5427
+    accuracy                           0.93      2000
+   macro avg       0.88      0.88      0.88      2000
+weighted avg       0.93      0.93      0.93      2000
 
 
 ==================================================
   COMBINED SCORE
 ==================================================
   (Intent Accuracy + Emotion Macro F1) / 2
-  = (89.65% + 0.4667) / 2  =  0.6816
+  = (89.04% + 0.8824) / 2  =  0.8864
 
 Summary saved -> evaluation\evaluation_summary.csv
 

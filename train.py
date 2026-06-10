@@ -11,7 +11,7 @@ import csv
 def train():
     # Hyperparameters
     BATCH_SIZE = 32
-    EPOCHS = 5
+    EPOCHS = 4
     LEARNING_RATE = 2e-5
     MAX_LENGTH = 128
     
@@ -27,7 +27,7 @@ def train():
     )
     
     print("Initializing model...")
-    model = MultiTaskRoBERTa(num_intents=151, num_emotions=28)
+    model = MultiTaskRoBERTa(num_intents=151, num_emotions=6)
     model.to(device)
     
     # Loss functions with ignore_index=-1

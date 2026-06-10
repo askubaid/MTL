@@ -1,6 +1,8 @@
 # Multi-Task Learning Pipeline: Intent & Emotion Classification
 
-A deep learning system that simultaneously classifies **user intent** and **emotion** from text, powered by a dual-head RoBERTa transformer — served through a FastAPI backend and a modern React web interface.
+
+A deep learning system that simultaneously classifies **user intent** and **emotion** from text, powered by a dual-head RoBERTa transformer — served through a FastAPI backend and a modern React web interface. 
+This is my Semester Project for Advanced Generative Computing Systems, supervised by Dr. Benish Amin at the Institute of Space Technology Islamabad.
 
 ---
 
@@ -27,10 +29,10 @@ Traditional NLP pipelines treat intent detection and emotion classification as s
                    /                        \
     ┌─────────────────────┐   ┌─────────────────────┐
     │   Intent Head        │   │   Emotion Head       │
-    │   Linear(768→151)    │   │   Linear(768→28)     │
+    │   Linear(768→151)    │   │   Linear(768→6)      │
     └─────────────────────┘   └─────────────────────┘
               │                          │
-    151 Intent Classes          28 Emotion Classes
+    151 Intent Classes           6 Emotion Classes
 ```
 
 - **Shared Encoder:** `roberta-base` (125M parameters), frozen bottom layers optional
@@ -45,7 +47,7 @@ Traditional NLP pipelines treat intent detection and emotion classification as s
 | Dataset | Task | Classes | Samples |
 |---|---|---|---|
 | [CLINC150](https://huggingface.co/datasets/clinc_oos) | Intent Detection | 151 | ~23,700 |
-| [GoEmotions](https://huggingface.co/datasets/go_emotions) | Emotion Classification | 28 | ~58,000 |
+| [DAIR-AI/Emotion](https://huggingface.co/datasets/dair-ai/emotion) | Emotion Classification | 6 | ~20,000 |
 
 A custom pipeline (`create_dataset.py`) logically combines these two datasets, assigning every text sample a valid Intent label and an Emotion label. A validation script (`validate_dataset.py`) checks class distributions and structural integrity before training begins.
 
@@ -55,17 +57,45 @@ A custom pipeline (`create_dataset.py`) logically combines these two datasets, a
 
 | Metric | Score |
 |---|---|
-| **Intent Accuracy** | **89.65%** |
-| Intent Macro F1 | 0.9219 |
-| **Emotion Accuracy** | **57.79%** |
-| Emotion Macro F1 | 0.4667 |
-| Combined Score | 0.6816 |
+| **Intent Accuracy** | **89.04%** |
+| Intent Macro F1 | 0.9189 |
+| **Emotion Accuracy** | **92.70%** |
+| Emotion Macro F1 | 0.8824 |
+| Combined Score | 0.8864 |
 
-Training was performed for **5 epochs** on an **NVIDIA RTX 2080 (8GB VRAM)** using FP16 mixed precision.
+Training was performed for **4 epochs** on an **NVIDIA RTX 2080 (8GB VRAM)** using FP16 mixed precision.
 
 ### Learning Curves
 
 ![Learning Curves](evaluation/learning_curves.png)
+
+### Experiment Comparison: GoEmotions vs DAIR-AI/Emotion
+
+Initially, the model was trained using the **GoEmotions** dataset (28 classes). We then switched to the **DAIR-AI/Emotion** dataset (6 classes) to balance the data distribution alongside the CLINC150 dataset and simplify the emotion taxonomy. This architectural shift resulted in a massive performance boost for emotion classification.
+
+#### Dataset Composition
+
+**Experiment 1 (CLINC150 + GoEmotions)**
+- **Train:** 58,660 samples (15,250 Intent + 43,410 Emotion)
+- **Validation:** 8,526 samples (3,100 Intent + 5,426 Emotion)
+- **Test:** 10,927 samples (5,500 Intent + 5,427 Emotion)
+
+**Experiment 2 (CLINC150 + DAIR-AI/Emotion)**
+- **Train:** 31,250 samples (15,250 Intent + 16,000 Emotion)
+  - *Intent Distribution:* Perfectly balanced (100 samples per standard class, 250 for `oos`).
+  - *Emotion Distribution:* `joy` (5,362), `sadness` (4,666), `anger` (2,159), `fear` (1,937), `love` (1,304), `surprise` (572).
+- **Validation:** 5,100 samples (3,100 Intent + 2,000 Emotion)
+- **Test:** 7,500 samples (5,500 Intent + 2,000 Emotion)
+
+#### Performance Comparison
+
+| Metric | Exp 1 (GoEmotions) | Exp 2 (DAIR-AI) | Improvement |
+|---|---|---|---|
+| **Intent Accuracy** | 89.65% | 89.04% | -0.61% |
+| **Intent Macro F1** | 0.9219 | 0.9189 | -0.0030 |
+| **Emotion Accuracy** | 57.79% | **92.70%** | **+34.91%** |
+| **Emotion Macro F1** | 0.4667 | **0.8824** | **+0.4157** |
+| **Combined Score** | 0.6816 | **0.8864** | **+0.2048** |
 
 ---
 
@@ -74,7 +104,7 @@ Training was performed for **5 epochs** on an **NVIDIA RTX 2080 (8GB VRAM)** usi
 | Parameter | Value |
 |---|---|
 | Base Model | `roberta-base` |
-| Epochs | 5 |
+| Epochs | 4 |
 | Batch Size | 32 |
 | Learning Rate | 2e-5 |
 | Max Token Length | 128 |
@@ -153,7 +183,7 @@ pip install -r backend/requirements.txt
 ### 3. Prepare the Dataset
 
 ```bash
-# Generate the combined MTL dataset from CLINC150 + GoEmotions
+# Generate the combined MTL dataset from CLINC150 + DAIR-AI/Emotion
 python create_dataset.py
 
 # Validate the generated dataset
@@ -188,7 +218,7 @@ You will be prompted to enter any text. The model will output the predicted Inte
 > Enter text: I need help tracking my package
 
   Intent  : track_package  (97.3%)
-  Emotion : curiosity  (62.1%)
+  Emotion : fear  (62.1%)
 ```
 
 ### 7. Run the Web Application
@@ -213,7 +243,7 @@ Open `http://localhost:5173` in your browser.
 
 - **📝 Text Analysis** — Enter any text review and receive dual predictions instantly
 - **📊 Confidence Scores** — Animated progress bars display prediction confidence
-- **🏷️ Label Reference** — Scrollable side-by-side lists of all 151 Intent and 28 Emotion labels
+- **🏷️ Label Reference** — Scrollable side-by-side lists of all 151 Intent and 6 Emotion labels
 - **📈 InfoGraphics Modal** — View training config, datasets, evaluation scores, learning curves, and the detailed classification report — all accessible via the top-right button
 
 ---
@@ -260,7 +290,18 @@ curl -X POST http://localhost:8000/predict \
 | Layer | Technology |
 |---|---|
 | Model | PyTorch, HuggingFace Transformers (`roberta-base`) |
-| Dataset | HuggingFace Datasets (CLINC150, GoEmotions) |
+| Dataset | HuggingFace Datasets (CLINC150, DAIR-AI/Emotion) |
 | Backend API | FastAPI, Uvicorn, Pydantic |
 | Frontend | React 18, Vite, Vanilla CSS |
 | Evaluation | Scikit-learn, Matplotlib |
+
+
+
+## Acknowledgments
+
+I would like to express my gratitude to Dr. Benish Amin for her guidance and support throughout this project.
+
+## License
+
+This is a gift from the Institute of Space Technology Islamabad, to the AI community. 
+Developed by Ubaid Ur Rehman.

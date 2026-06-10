@@ -95,7 +95,7 @@ def startup_event():
     tokenizer = RobertaTokenizer.from_pretrained("roberta-base")
     
     # Load model
-    model = MultiTaskRoBERTa(num_intents=151, num_emotions=28)
+    model = MultiTaskRoBERTa(num_intents=151, num_emotions=6)
     state_dict = torch.load(model_path, map_location=device, weights_only=True)
     model.load_state_dict(state_dict)
     model.to(device)

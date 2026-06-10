@@ -3,7 +3,7 @@ import torch.nn as nn
 from transformers import RobertaModel
 
 class MultiTaskRoBERTa(nn.Module):
-    def __init__(self, num_intents=151, num_emotions=28):
+    def __init__(self, num_intents=151, num_emotions=6):
         super(MultiTaskRoBERTa, self).__init__()
         # Shared encoder
         self.roberta = RobertaModel.from_pretrained("roberta-base")

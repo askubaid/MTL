@@ -16,9 +16,9 @@ const AvailableEmotions = () => {
     <div className="labels-column">
       <h3>Available Emotions</h3>
       <div className="dataset-meta" style={{ fontSize: '0.85em', color: '#666', marginBottom: '15px' }}>
-        <p><strong>Dataset Name:</strong> GoEmotions</p>
-        <p><strong>Dataset Size:</strong> {labels.length} classes (58,000+ Reddit comments)</p>
-        <p><strong>Creator:</strong> Google Research</p>
+        <p><strong>Dataset Name:</strong> DAIR-AI / Emotion</p>
+        <p><strong>Dataset Size:</strong> {labels.length} classes (20,000 Twitter samples)</p>
+        <p><strong>Creator:</strong> DAIR.AI</p>
       </div>
       <div className="labels-list">
         {labels.map((emotion, idx) => (
