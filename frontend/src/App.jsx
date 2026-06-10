@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import './index.css';
 import PredictionCard from './components/PredictionCard';
 import InfoModal from './components/InfoModal';
+import intentCsv from './intent_labels.csv?raw';
+import emotionCsv from './emotion_labels.csv?raw';
 
 function App() {
   const [text, setText] = useState('');
@@ -13,19 +15,16 @@ function App() {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
-    const fetchLabels = async () => {
-      try {
-        const response = await fetch(`${backendUrl}/labels`);
-        if (response.ok) {
-          const data = await response.json();
-          setLabels(data);
-        }
-      } catch (err) {
-        console.error("Failed to fetch labels", err);
-      }
+    const parseCsv = (csvText) => {
+      const lines = csvText.trim().split('\n');
+      return lines.slice(1).map(line => line.split(',')[1].trim());
     };
-    fetchLabels();
-  }, [backendUrl]);
+    
+    setLabels({
+      intents: parseCsv(intentCsv),
+      emotions: parseCsv(emotionCsv)
+    });
+  }, []);
 
   const handleSubmit = async () => {
     if (!text.trim()) return;
