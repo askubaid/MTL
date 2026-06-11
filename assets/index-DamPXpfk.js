@@ -420,7 +420,7 @@ I would like to express my gratitude to Dr. Benish Amin for her guidance and sup
 
 This is a gift from the Institute of Space Technology Islamabad, to the AI community. 
 Developed by Ubaid Ur Rehman.
-`,xl=({isOpen:e,onClose:t})=>e?(0,x.jsx)(`div`,{className:`modal-overlay`,onClick:t,children:(0,x.jsxs)(`div`,{className:`modal-content`,onClick:e=>e.stopPropagation(),style:{maxWidth:`900px`,width:`95%`,maxHeight:`90vh`,overflowY:`auto`},children:[(0,x.jsx)(`button`,{className:`modal-close`,onClick:t,style:{position:`sticky`,top:`10px`,float:`right`},children:`×`}),(0,x.jsx)(`div`,{className:`markdown-body`,style:{padding:`20px`,textAlign:`left`,borderRadius:`8px`},children:(0,x.jsx)(go,{remarkPlugins:[yl],children:bl})})]})}):null,Sl=`label_id,label_name\r
+`,xl=({isOpen:e,onClose:t})=>e?(0,x.jsx)(`div`,{className:`modal-overlay`,onClick:t,children:(0,x.jsxs)(`div`,{className:`modal-content`,onClick:e=>e.stopPropagation(),style:{maxWidth:`900px`,width:`95%`,maxHeight:`90vh`,overflowY:`auto`},children:[(0,x.jsx)(`button`,{className:`modal-close`,onClick:t,style:{position:`sticky`,top:`10px`,float:`right`},children:`×`}),(0,x.jsx)(`div`,{className:`markdown-body`,style:{padding:`20px`,textAlign:`left`,borderRadius:`8px`},children:(0,x.jsx)(go,{remarkPlugins:[yl],components:{img:({node:e,...t})=>{let n=t.src;return n&&!n.startsWith(`http`)&&(n=`https://raw.githubusercontent.com/askubaid/MTL/main/${n}`),(0,x.jsx)(`img`,{...t,src:n,style:{maxWidth:`100%`,height:`auto`}})}},children:bl})})]})}):null,Sl=`label_id,label_name\r
 0,restaurant_reviews\r
 1,nutrition_info\r
 2,account_blocked\r
