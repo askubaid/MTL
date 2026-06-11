@@ -170,8 +170,6 @@ Initially, the model was trained using the **GoEmotions** dataset (28 classes). 
 
 ## Training Hyperparameters
 
-![Learning Curves](evaluation/learning_curves.png)
-
 | Parameter | Value |
 |---|---|
 | Base Model | `roberta-base` |
@@ -215,14 +213,22 @@ Project/
 │   ├── best_model.pt           # Best model checkpoint (saved by validation loss)
 │   └── last_checkpoint.pt      # Latest checkpoint for resuming training
 │
+├── architecture.png            # Model architecture diagram
+├── system.png                  # System tech stack diagram
 ├── model.py                    # MultiTaskRoBERTa architecture
 ├── dataset.py                  # PyTorch Dataset class & DataLoaders
 ├── create_dataset.py           # Dataset combination pipeline
 ├── validate_dataset.py         # Dataset health checks
+├── dataset_stats.py            # Dataset statistics generator
+├── dataset_stats_output.txt    # Output file containing dataset stats
 ├── train.py                    # Training loop with AMP & checkpointing
 ├── evaluate.py                 # Full evaluation with per-class reports
 ├── inference.py                # CLI inference script
-└── evaluation.txt              # Detailed per-class evaluation report
+├── download_model.py           # Script to download pre-trained weights
+├── evaluation.txt              # Detailed per-class evaluation report
+├── MileStones.md               # Project milestones document
+├── project.md                  # Additional project documentation
+└── Project Proposal.docx       # Original project proposal document
 ```
 
 ---
