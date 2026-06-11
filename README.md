@@ -14,26 +14,7 @@ Traditional NLP pipelines treat intent detection and emotion classification as s
 
 ## Architecture
 
-```
-                ┌─────────────────────────────┐
-                │        Input Text            │
-                └─────────────────────────────┘
-                              │
-                              ▼
-                ┌─────────────────────────────┐
-                │  RoBERTa-base Encoder        │
-                │  (Shared Backbone)           │
-                │  + Dropout (0.1)             │
-                └─────────────────────────────┘
-                    /                      \
-                   /                        \
-    ┌─────────────────────┐   ┌─────────────────────┐
-    │   Intent Head        │   │   Emotion Head       │
-    │   Linear(768→151)    │   │   Linear(768→6)      │
-    └─────────────────────┘   └─────────────────────┘
-              │                          │
-    151 Intent Classes           6 Emotion Classes
-```
+![Architecture](architecture.png)
 
 - **Shared Encoder:** `roberta-base` (125M parameters), frozen bottom layers optional
 - **[CLS] Pooler Output** feeds into both classification heads
@@ -46,12 +27,100 @@ Traditional NLP pipelines treat intent detection and emotion classification as s
 
 | Dataset | Task | Classes | Samples |
 |---|---|---|---|
-| [CLINC150](https://huggingface.co/datasets/clinc_oos) | Intent Detection | 151 | ~23,700 |
+| [CLINC150](https://www.kaggle.com/datasets/hongtrung/clinc150-dataset) | Intent Detection | 151 | ~23,700 |
 | [DAIR-AI/Emotion](https://huggingface.co/datasets/dair-ai/emotion) | Emotion Classification | 6 | ~20,000 |
 
 A custom pipeline (`create_dataset.py`) logically combines these two datasets, assigning every text sample a valid Intent label and an Emotion label. A validation script (`validate_dataset.py`) checks class distributions and structural integrity before training begins.
 
 ---
+
+## Dataset Statistics
+
+```text
+============================================================
+1. ORIGINAL DATASETS DISTRIBUTION (All splits combined)
+============================================================
+
+[DAIR-AI/Emotion Class Distribution]
+  joy             : 6,761
+  sadness         : 5,797
+  anger           : 2,709
+  fear            : 2,373
+  love            : 1,641
+  surprise        : 719
+
+
+[CLINC150 (Intent) Class Distribution (Top 10 & Bottom 10)]
+  42                        : 1,350
+  89                        : 150
+  2                         : 150
+  21                        : 150
+  137                       : 150
+  37                        : 150
+  19                        : 150
+  112                       : 150
+  70                        : 150
+  31                        : 150
+  ... (skipping middle classes)
+  107                       : 150
+  149                       : 150
+  74                        : 150
+  65                        : 150
+  76                        : 150
+  119                       : 150
+  98                        : 150
+  30                        : 150
+  132                       : 150
+  51                        : 150
+
+============================================================
+2. GENERATED MTL DATASETS (Train/Validation/Test)
+============================================================
+  Train Dataset      : 31,250 samples
+  Validation Dataset : 5,100 samples
+  Test Dataset       : 7,500 samples
+-----------------------------------
+  Total              : 43,850 samples
+
+============================================================
+3. TRAINING SET CLASS DISTRIBUTION
+============================================================
+
+[Total Samples by Task]
+  Intent Samples  : 15,250
+  Emotion Samples : 16,000
+
+[Training Set - Emotion Class Counts]
+  joy             : 5,362
+  sadness         : 4,666
+  anger           : 2,159
+  fear            : 1,937
+  love            : 1,304
+  surprise        : 572
+
+[Training Set - Intent Class Counts (Top 10 & Bottom 10)]
+  oos                       : 250
+  shopping_list_update      : 100
+  smart_home                : 100
+  change_speed              : 100
+  meeting_schedule          : 100
+  current_location          : 100
+  account_blocked           : 100
+  taxes                     : 100
+  weather                   : 100
+  pay_bill                  : 100
+  ... (skipping middle classes)
+  pin_change                : 100
+  traffic                   : 100
+  measurement_conversion    : 100
+  restaurant_reviews        : 100
+  new_card                  : 100
+  distance                  : 100
+  interest_rate             : 100
+  yes                       : 100
+  mpg                       : 100
+  transfer                  : 100
+```
 
 ## Results
 
@@ -100,6 +169,8 @@ Initially, the model was trained using the **GoEmotions** dataset (28 classes). 
 ---
 
 ## Training Hyperparameters
+
+![Learning Curves](evaluation/learning_curves.png)
 
 | Parameter | Value |
 |---|---|
@@ -286,6 +357,8 @@ curl -X POST http://localhost:8000/predict \
 ---
 
 ## Tech Stack
+
+![System Architecture](system.png)
 
 | Layer | Technology |
 |---|---|
